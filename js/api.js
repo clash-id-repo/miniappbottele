@@ -415,7 +415,7 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
     console.log('[API] Development mode detected');
 } else {
     // Production - ganti dengan domain Anda
-    API.baseUrl = 'https://your-domain.com/api';
+    API.baseUrl = 'https://37551c27b8d5.ngrok-free.app/api';
     console.log('[API] Production mode');
 }
 
@@ -423,3 +423,4 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
 console.log('[API] API Handler initialized');
 console.log('[API] Base URL:', API.baseUrl);
 console.log('[API] Mock mode:', API.useMock ? 'ON' : 'OFF');
+
