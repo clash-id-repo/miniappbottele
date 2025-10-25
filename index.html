@@ -35,7 +35,6 @@
             position: relative;
         }
 
-        /* Animated Background */
         body::before {
             content: '';
             position: fixed;
@@ -63,7 +62,6 @@
             }
         }
 
-        /* Grid Pattern */
         body::after {
             content: '';
             position: fixed;
@@ -89,7 +87,6 @@
             }
         }
 
-        /* Preloader */
         .preloader {
             position: fixed;
             top: 0;
@@ -162,7 +159,6 @@
             }
         }
 
-        /* Container */
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -178,7 +174,6 @@
             }
         }
 
-        /* Header */
         .header {
             text-align: center;
             margin-bottom: 40px;
@@ -251,18 +246,16 @@
             text-transform: uppercase;
         }
 
-        /* Card */
         .card {
             background: var(--bg-card);
             border-radius: 20px;
-            padding: 30px;
+            padding: 25px;
             margin-bottom: 20px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(139, 92, 246, 0.2);
             position: relative;
             overflow: hidden;
             animation: slideUp 0.8s ease forwards;
-            animation-delay: 0.8s;
             opacity: 0;
         }
 
@@ -294,7 +287,7 @@
 
         .card-title {
             font-family: 'Orbitron', monospace;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             margin-bottom: 20px;
             color: var(--purple-light);
@@ -304,26 +297,56 @@
         }
 
         .icon {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, var(--purple-primary), var(--cyan));
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 12px;
         }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--purple-primary), var(--cyan));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', monospace;
+            font-size: 32px;
+            font-weight: 900;
+            color: #000;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+            animation: avatarPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes avatarPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 50px rgba(6, 182, 212, 0.8);
+            }
+        }
+
 
         .info-grid {
             display: grid;
-            gap: 15px;
+            gap: 12px;
         }
 
         .info-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px;
+            padding: 12px;
             background: rgba(139, 92, 246, 0.05);
             border-left: 3px solid var(--purple-primary);
             border-radius: 10px;
@@ -337,7 +360,7 @@
         }
 
         .info-label {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-gray);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -345,7 +368,7 @@
 
         .info-value {
             font-family: 'Orbitron', monospace;
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--text-light);
             text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
@@ -353,15 +376,20 @@
 
         .badge {
             display: inline-block;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             background: linear-gradient(135deg, var(--purple-primary), var(--purple-dark));
             box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
             animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        .badge.premium {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #000;
         }
 
         @keyframes badgePulse {
@@ -376,70 +404,50 @@
             }
         }
 
-        /* Stats Grid */
-        .stats-grid {
+        .stats-grid-3 {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
         }
 
-        .stat-box {
+        .stat-box-mini {
             background: rgba(139, 92, 246, 0.05);
-            padding: 20px;
-            border-radius: 15px;
+            padding: 15px 10px;
+            border-radius: 12px;
             text-align: center;
             border: 1px solid rgba(139, 92, 246, 0.2);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        .stat-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .stat-box:hover {
+        .stat-box-mini:hover {
             border-color: var(--cyan);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
         }
 
-        .stat-box:hover::before {
-            opacity: 1;
-        }
-
-        .stat-value {
+        .stat-value-mini {
             font-family: 'Orbitron', monospace;
-            font-size: 32px;
+            font-size: 20px;
             font-weight: 900;
             background: linear-gradient(135deg, var(--purple-light), var(--cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
-        .stat-label {
-            font-size: 12px;
+        .stat-label-mini {
+            font-size: 10px;
             color: var(--text-gray);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Footer */
         .footer {
             text-align: center;
             margin-top: 40px;
             padding: 20px;
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-gray);
             border-top: 1px solid rgba(139, 92, 246, 0.2);
         }
@@ -454,61 +462,101 @@
 </head>
 
 <body>
-    <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="loader"></div>
         <div class="preloader-text">INITIALIZING...</div>
     </div>
-    <br>
-    <!-- Main Content -->
+
     <div class="container">
         <div class="header">
             <div class="logo">CLASH ID PROJECT</div>
             <div class="subtitle">Mini Dashboard</div>
         </div>
 
-        <div class="card" style="animation-delay: 0.9s;">
-            <div class="card-title">
-                <span class="icon">👤</span>
-                User Information
-            </div>
+        <!-- User Info Card -->
+        <div class="card" style="animation-delay: 0.8s;">
+            <div class="card-title"><span class="icon">👤</span> User Information</div>
+
+            <!-- Avatar -->
+            <div class="profile-avatar" id="avatar">?</div>
+
             <div class="info-grid">
                 <div class="info-item">
+                    <span class="info-label">First Name</span>
+                    <span class="info-value" id="firstName">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Last Name</span>
+                    <span class="info-value" id="lastName">-</span>
+                </div>
+                <div class="info-item">
                     <span class="info-label">Username</span>
-                    <span class="info-value" id="username">Loading...</span>
+                    <span class="info-value" id="username">-</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">User ID</span>
-                    <span class="info-value" id="userId">Loading...</span>
+                    <span class="info-value" id="userId">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Language</span>
+                    <span class="info-value" id="language">-</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Status</span>
-                    <span class="badge">ACTIVE</span>
+                    <span class="badge" id="status">ACTIVE</span>
                 </div>
             </div>
         </div>
 
-        <div class="card" style="animation-delay: 1.1s;">
-            <div class="card-title">
-                <span class="icon">📊</span>
-                Bot Statistics
+        <!-- Device Info Card -->
+        <div class="card" style="animation-delay: 1.0s;">
+            <div class="card-title"><span class="icon">📱</span> Device Information</div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Platform</span>
+                    <span class="info-value" id="platform">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Browser</span>
+                    <span class="info-value" id="browser">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Connection</span>
+                    <span class="info-value" id="connection">-</span>
+                </div>
             </div>
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-value">1,234</div>
-                    <div class="stat-label">Total Users</div>
+        </div>
+
+        <!-- Performance Stats -->
+        <div class="card" style="animation-delay: 1.2s;">
+            <div class="card-title"><span class="icon">⚡</span> Performance Metrics</div>
+            <div class="stats-grid-3">
+                <div class="stat-box-mini">
+                    <div class="stat-value-mini" id="loadTime">--ms</div>
+                    <div class="stat-label-mini">Load Speed</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-value">5,678</div>
-                    <div class="stat-label">Files</div>
+                <div class="stat-box-mini">
+                    <div class="stat-value-mini" id="timezone">UTC+7</div>
+                    <div class="stat-label-mini">Timezone</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-value">99.8%</div>
-                    <div class="stat-label">Uptime</div>
+                <div class="stat-box-mini">
+                    <div class="stat-value-mini" id="currentTime">--:--</div>
+                    <div class="stat-label-mini">Local Time</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-value">24/7</div>
-                    <div class="stat-label">Online</div>
+            </div>
+        </div>
+
+        <!-- Session Info -->
+        <div class="card" style="animation-delay: 1.4s;">
+            <div class="card-title"><span class="icon">🕐</span> Session Details</div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Session Duration</span>
+                    <span class="info-value" id="sessionTime">00:00</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Page Views</span>
+                    <span class="info-value" id="pageViews">1</span>
                 </div>
             </div>
         </div>
@@ -516,7 +564,7 @@
         <div class="footer">
             <div class="footer-line"></div>
             <p>CLASH ID PROJECT © 2025</p>
-            <p>Powered by Telegram Mini Apps</p>
+            <p>Powered by CLASH ID PROJECT X ARHVERSE X NUSAKARSA</p>
         </div>
     </div>
 
@@ -525,23 +573,101 @@
         tg.expand();
         tg.ready();
 
-        // Hide preloader after 2 seconds
+        const loadStart = performance.now();
+
         window.addEventListener('load', () => {
+            const loadEnd = performance.now();
+            const loadTime = Math.round(loadEnd - loadStart);
+
             setTimeout(() => {
                 document.getElementById('preloader').classList.add('hidden');
+                initializeData(loadTime);
             }, 2000);
         });
 
-        // Get user data from Telegram
-        const user = tg.initDataUnsafe.user || {};
-        const userId = user.id || 'Unknown';
-        const userName = user.username || user.first_name || 'User';
+        function initializeData(loadTime) {
+            // User Data dari Telegram
+            const user = tg.initDataUnsafe.user || {};
+            const firstName = user.first_name || 'Unknown';
+            const lastName = user.last_name || '-';
+            const userName = user.username ? '@' + user.username : '-';
+            const userId = user.id || 'Unknown';
+            const languageCode = (user.language_code || 'en').toUpperCase();
+            const isPremium = user.is_premium || false;
+            const initial = firstName.charAt(0).toUpperCase();
+            document.getElementById('avatar').textContent = initial;
 
-        // Update UI
-        setTimeout(() => {
-            document.getElementById('username').textContent = '@' + userName;
-            document.getElementById('userId').textContent = userId;
-        }, 2500);
+            // Platform dari Telegram
+            const platform = (tg.platform || 'web').toUpperCase();
+
+            // Browser Detection
+            const ua = navigator.userAgent;
+            let browser = 'Unknown';
+            if (ua.includes('Chrome')) browser = 'Chrome';
+            else if (ua.includes('Firefox')) browser = 'Firefox';
+            else if (ua.includes('Safari')) browser = 'Safari';
+            else if (ua.includes('Edge')) browser = 'Edge';
+            else if (ua.includes('Opera')) browser = 'Opera';
+
+            // Screen Resolution
+            const resolution = `${window.screen.width}x${window.screen.height}`;
+
+            // Connection Speed Estimate
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            const connectionType = connection ? (connection.effectiveType || 'Unknown') : 'Unknown';
+
+            // Timezone
+            const offset = -new Date().getTimezoneOffset() / 60;
+            const timezoneStr = `UTC${offset >= 0 ? '+' : ''}${offset}`;
+
+            // Update UI
+            setTimeout(() => {
+                document.getElementById('firstName').textContent = firstName;
+                document.getElementById('lastName').textContent = lastName;
+                document.getElementById('username').textContent = userName;
+                document.getElementById('userId').textContent = userId;
+                document.getElementById('language').textContent = languageCode;
+                document.getElementById('platform').textContent = platform;
+                document.getElementById('browser').textContent = browser;
+                document.getElementById('resolution').textContent = resolution;
+                document.getElementById('connection').textContent = connectionType.toUpperCase();
+                document.getElementById('loadTime').textContent = loadTime + 'ms';
+                document.getElementById('timezone').textContent = timezoneStr;
+
+                const statusBadge = document.getElementById('status');
+                if (isPremium) {
+                    statusBadge.textContent = '💎 PREMIUM';
+                    statusBadge.classList.add('premium');
+                }
+            }, 500);
+
+            // Session Timer
+            const sessionStart = Date.now();
+            setInterval(() => {
+                const elapsed = Math.floor((Date.now() - sessionStart) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                document.getElementById('sessionTime').textContent =
+                    `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }, 1000);
+
+            // Current Time
+            setInterval(() => {
+                const now = new Date();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                document.getElementById('currentTime').textContent = `${hours}:${minutes}`;
+            }, 1000);
+
+            // Page Views (increment on visibility change)
+            let pageViews = 1;
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) {
+                    pageViews++;
+                    document.getElementById('pageViews').textContent = pageViews;
+                }
+            });
+        }
     </script>
 </body>
 
