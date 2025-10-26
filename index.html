@@ -257,6 +257,7 @@
             overflow: hidden;
             animation: slideUp 0.8s ease forwards;
             opacity: 0;
+            transform: translateY(30px);
         }
 
         @keyframes slideUp {
@@ -264,10 +265,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        .card {
-            transform: translateY(30px);
         }
 
         .card::before {
@@ -335,7 +332,6 @@
                 box-shadow: 0 0 50px rgba(6, 182, 212, 0.8);
             }
         }
-
 
         .info-grid {
             display: grid;
@@ -466,7 +462,7 @@
         <div class="loader"></div>
         <div class="preloader-text">INITIALIZING...</div>
     </div>
-    <br>
+
     <div class="container">
         <div class="header">
             <div class="logo">CLASH ID PROJECT</div>
@@ -476,10 +472,7 @@
         <!-- User Info Card -->
         <div class="card" style="animation-delay: 0.8s;">
             <div class="card-title"><span class="icon">👤</span> User Information</div>
-
-            <!-- Avatar -->
             <div class="profile-avatar" id="avatar">?</div>
-
             <div class="info-grid">
                 <div class="info-item">
                     <span class="info-label">First Name</span>
@@ -594,8 +587,6 @@
             const userId = user.id || 'Unknown';
             const languageCode = (user.language_code || 'en').toUpperCase();
             const isPremium = user.is_premium || false;
-            const initial = firstName.charAt(0).toUpperCase();
-            document.getElementById('avatar').textContent = initial;
 
             // Platform dari Telegram
             const platform = (tg.platform || 'web').toUpperCase();
@@ -609,19 +600,29 @@
             else if (ua.includes('Edge')) browser = 'Edge';
             else if (ua.includes('Opera')) browser = 'Opera';
 
-            // Screen Resolution
-            const resolution = `${window.screen.width}x${window.screen.height}`;
-
-            // Connection Speed Estimate
-            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-            const connectionType = connection ? (connection.effectiveType || 'Unknown') : 'Unknown';
+            // Connection Speed Estimate dengan fallback
+            let connectionType = 'N/A';
+            if (navigator.connection || navigator.mozConnection || navigator.webkitConnection) {
+                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                connectionType = connection.effectiveType || '4G';
+            } else {
+                // Fallback: estimate dari load time
+                if (loadTime < 500) connectionType = '4G+';
+                else if (loadTime < 1000) connectionType = '4G';
+                else if (loadTime < 2000) connectionType = '3G';
+                else connectionType = '2G';
+            }
 
             // Timezone
             const offset = -new Date().getTimezoneOffset() / 60;
             const timezoneStr = `UTC${offset >= 0 ? '+' : ''}${offset}`;
 
+            // Initial untuk avatar
+            const initial = firstName.charAt(0).toUpperCase();
+
             // Update UI
             setTimeout(() => {
+                document.getElementById('avatar').textContent = initial;
                 document.getElementById('firstName').textContent = firstName;
                 document.getElementById('lastName').textContent = lastName;
                 document.getElementById('username').textContent = userName;
@@ -629,7 +630,6 @@
                 document.getElementById('language').textContent = languageCode;
                 document.getElementById('platform').textContent = platform;
                 document.getElementById('browser').textContent = browser;
-                document.getElementById('resolution').textContent = resolution;
                 document.getElementById('connection').textContent = connectionType.toUpperCase();
                 document.getElementById('loadTime').textContent = loadTime + 'ms';
                 document.getElementById('timezone').textContent = timezoneStr;
@@ -672,4 +672,3 @@
 </body>
 
 </html>
-
